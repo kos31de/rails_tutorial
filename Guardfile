@@ -39,7 +39,7 @@ end
 def integration_tests(resource = :all)
   if resource == :all
     Dir["test/integration/*"] else
-      Dir["test/integration/#{resource}_*.rb"]
+                                Dir["test/integration/#{resource}_*.rb"]
   end
 end
 
