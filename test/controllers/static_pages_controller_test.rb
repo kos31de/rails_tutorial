@@ -2,6 +2,11 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
+  test "should_get_root" do
+    get static_pages_root_url
+    assert_response :success
+  end
+
   def setup
     @base_title = "Ruby on Rails Tutorial Sample App"
   end
