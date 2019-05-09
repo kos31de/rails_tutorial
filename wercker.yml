@@ -1,4 +1,4 @@
-box: ruby:2.6.2
+box: ruby:2.5.3
 build:
   steps:
     - install-packages:
