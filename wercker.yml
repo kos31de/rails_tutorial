@@ -1,4 +1,4 @@
-box: ruby:2.6.2
+box: ruby:2.5.3
 build:
   steps:
     - install-packages:
@@ -15,7 +15,10 @@ build:
         code: bundle config build.nokogiri --use-system-libraries
 
     - bundle-install
-
+    
+    - script:
+        name: rubocop
+        code: bundle exec rubocop
 # アクティブレコードを作成したらコメントを外して利用すること
 #     - script:
 #         name: db:migrate
