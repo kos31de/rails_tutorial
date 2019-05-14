@@ -1,5 +1,6 @@
 # Ruby on Rails チュートリアルのサンプルアプリケーション
 
+https://fathomless-plateau-51102.herokuapp.com/
 これは、次の教材で作られたサンプルアプリケーションです。   
 [*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 [Michael Hartl](http://www.michaelhartl.com/) 著
