@@ -3,10 +3,16 @@ class SessionsController < ApplicationController
   end
 
   def create
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+    # ユーザーログイン後は、ユーザー情報のページにリダイレクト
+    else
+      # エラーメッセージを出す
     render 'new'
+    end
   end
 
   def destroy
-    
+
   end
 end
