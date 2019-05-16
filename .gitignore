@@ -28,4 +28,5 @@
 /.vscode
 /.DS_Store
 # .idea ha zenbu iranai ya- ^o^
-/.idea
+.idea/
+/search_dependency_gems.py
