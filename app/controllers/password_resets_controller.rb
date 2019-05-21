@@ -43,7 +43,7 @@ class PasswordResetsController < ApplicationController
 
   # beforeフィルタ
 
-  def get_user
+  def get_user # rubocop:disable all
     @user = User.find_by(email: params[:email])
   end
 
