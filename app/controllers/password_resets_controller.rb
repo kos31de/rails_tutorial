@@ -41,17 +41,18 @@ class PasswordResetsController < ApplicationController
   end
 
   # beforeフィルタ
-  
+
   def get_user
     @user = User.find_by(email: params[:email])
   end
 
   # 正しいユーザーかどうかを確認する
   def valid_user
-    unless(@user && @user.acivated? &&
+    unless(@user && @user.activated? &&
         @user.authenticated?(:reset, params[:id]))
       redirect_to root_url
     end
+  end  
 
     # トークンが有効期限切れかどうか確認する
   def check_expiration
