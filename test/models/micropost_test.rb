@@ -3,8 +3,8 @@ require 'test_helper'
 class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    # 後で修正
-    @micropost = Micropost.new(content: "Lorem ipsum", user_id: @user.id)
+    # 慣習的に正しい書き方。関連付けていればuser_idは自動的に付く。
+    @micropost = @user.microposts.build(content: "Lorem ipsum")
   end
 
   test "should be valid" do
