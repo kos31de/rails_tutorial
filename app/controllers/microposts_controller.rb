@@ -1,21 +1,9 @@
-require 'test_helper'
+class MicropostsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
 
-class MicropostsControllerTest < ApplicationController
-  def setup
-    @micropost = microposts(:orange)
+  def create
   end
 
-  test "should redirect create when not logged in" do
-    assert_no_difference 'Micropost.count' do
-      post micropost_path, params: { micropost: { content: "Lorem ipsum"} }
-    end
-    assert_redirected_to login_url
-  end
-
-  test "should redirect destroy when not logged in" do
-    assert_no_difference 'Microposy.count' do
-      delete micropost_path(@micropost)
-    end
-    assert_redirected_to login_url
+  def destroy
   end
 end
