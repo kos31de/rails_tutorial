@@ -66,7 +66,6 @@ GEM
     execjs (2.7.0)
     faker (1.7.3)
       i18n (~> 0.5)
-    faker-okinawa (0.1.1)
     ffi (1.10.0)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -229,7 +228,6 @@ DEPENDENCIES
   byebug (= 9.0.6)
   coffee-rails (= 4.2.2)
   faker (= 1.7.3)
-  faker-okinawa
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (= 2.7.0)
