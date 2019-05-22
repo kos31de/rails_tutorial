@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.3'
 gem 'rails',        '5.1.6'
+gem 'faker-okinawa'
 gem 'bcrypt', '3.1.12'
 gem 'faker', '1.7.3'
 gem 'will_paginate', '3.1.6'
