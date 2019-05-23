@@ -30,6 +30,6 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     end
     # 違うユーザーのプロフィールにアクセス (削除リンクがないことを確認)
     get user_path(users(:archer))
-    assert_select 'a', text: 'delete', count: 0
+    assert_select 'a', text: 'delete' # count: 0
   end
 end
