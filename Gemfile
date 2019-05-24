@@ -41,5 +41,5 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog'
+  gem 'fog-aws'
 end
