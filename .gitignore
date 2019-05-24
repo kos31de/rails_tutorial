@@ -30,3 +30,6 @@
 # .idea ha zenbu iranai ya- ^o^
 .idea/
 /search_dependency_gems.py
+
+# アップロードされたテスト画像を無視する
+/public/uploads
