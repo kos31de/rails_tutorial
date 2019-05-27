@@ -33,3 +33,5 @@
 
 # アップロードされたテスト画像を無視する
 /public/uploads
+# プリコンパイルした結果
+/public/assets
