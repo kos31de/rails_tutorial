@@ -286,3 +286,10 @@ span.picture {
     border: 0;
   }
 }
+
+/* button :[btn]の色が動作しないため追加 */
+.btn-secondary {
+  @include button-variant($btn-default-color,
+                          #BBBBBB,
+                          $btn-default-border);
+}
