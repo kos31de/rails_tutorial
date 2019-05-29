@@ -3,6 +3,13 @@
   <%= link_to "sample app", root_path, id: "logo" %>
   <nav>
     <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= form_tag("/search", method: "get") do %>
+          <%= label_tag(:q, "Search for:") %>
+          <%= text_field_tag(:q) %>
+          <%= submit_tag("Search") %>
+        <% end %>
+      </li>
       <li><%= link_to "Home",   root_path %></li>
       <li><%= link_to "Help",   help_path %></li>
       <% if logged_in? %>
