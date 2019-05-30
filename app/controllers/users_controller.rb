@@ -3,7 +3,14 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    if params[:q] && params[:q].reject {|key, value| value.blank?}.present?
+      @q = User.ransack(search_params, acticated_true: true)
+      @title = "Search Result"
+    else
+      @q = User.ransack(activated_true: true)
+      @title = "All Users"
+    end
+    @users = @q.result.paginate(page: params[:page])
   end
 
   def show
@@ -49,7 +56,9 @@ class UsersController < ApplicationController
   end
 
   private
-
+  def search_params
+    params.require(:q).permit(:name_include)
+  end
   # Strong parameters
   def user_params
     params.require(:user).permit(:name, :email, :password,
