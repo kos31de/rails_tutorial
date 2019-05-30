@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   def index
-    if params[:q] && params[:q].reject {|key, value| value.blank?}.present?
+    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
       @q = User.ransack(search_params, acticated_true: true)
       @title = "Search Result"
     else
@@ -56,9 +56,11 @@ class UsersController < ApplicationController
   end
 
   private
+
   def search_params
-    params.require(:q).permit(:name_include)
+    params.require(:q).permit(:name_cont)
   end
+
   # Strong parameters
   def user_params
     params.require(:user).permit(:name, :email, :password,

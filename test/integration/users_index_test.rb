@@ -29,29 +29,29 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: 'delete', count: 0
   end
 
-  test "user search" do
+  test "users search" do
     log_in_as(@admin)
     # All users
-    get user_path, params: {q: {name_cont: ""}}
-    User.paginate(page:1).each do |user|
-    assert_select 'a[href=?]', user_path(user), text: user.name
+    get users_path, params: { q: { name_cont: "" } }
+    User.paginate(page: 1).each do |user|
+      assert_select 'a[href=?]', user_path(user), text: user.name
     end
-    assert_select 'title', "All users | Ruby on Rails Tutorial Sample App"
+    assert_select 'title', "All Users | Ruby on Rails Tutorial Sample App"
+
+    # User search
+    get users_path, params: { q: { name_cont: "a" } }
+    q = User.ransack(name_cont: "a", activated_true: true)
+    q.result.paginate(page: 1).each do |user|
+      assert_select 'a[href=?]', user_path(user), text: user.name
+    end
+    assert_select 'title', "Search Result | Ruby on Rails Tutorial Sample App"
+
+    # User search (no result)
+    get users_path, params: { q: { name_cont: "abcdefghijk" } }
+    assert_match "Couldn't find any user.", response.body
+
+    # Make sure the title is back to 'All users'
+    get users_path, params: { q: { name_cont: "" } }
+    assert_select 'title', "All Users | Ruby on Rails Tutorial Sample App"
   end
-
-  # User search
-  get users_path, params: {q: {name_cont}: "a"}
-  q = User.ransack(name_cont: "a", activated_true: true)
-  q.result.paginate(page: 1).each do |user|
-    assert_select 'a[href=?], user_path(user), text:user.name'
-  end
-  assert_select 'title', "Search Result | Ruby on Rails Tutorial Sample App"
-
-  # User search(no result)
-  get users_path, params: {q: {name_cont: "abcdefghijk"}}
-  assert_match "Couldn't fidn any user.", response.body
-
-  #　Make sure the title is back to 'All users'
-  get users_path, params: {q: {name_cont: ""}}
-  assert_select 'title', "All users | Ruby on Rails Tutorial Sample App"
 end
