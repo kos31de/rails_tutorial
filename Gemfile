@@ -17,6 +17,7 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'pry-rails'
 gem 'pry-byebug'
+gem 'ransack', '1.8.4'
 
 group :development, :test do
   gem 'rubocop'

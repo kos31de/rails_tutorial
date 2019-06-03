@@ -1,9 +1,17 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
+      @q = User.ransack(search_params, acticated_true: true)
+      @title = "Search Result"
+    else
+      @q = User.ransack(activated_true: true)
+      @title = "All Users"
+    end
+    @users = @q.result.paginate(page: params[:page])
   end
 
   def show
@@ -48,7 +56,25 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
   private
+
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
 
   # Strong parameters
   def user_params
