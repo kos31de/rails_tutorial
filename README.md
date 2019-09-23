@@ -1,42 +1,32 @@
-# Ruby on Rails チュートリアルのサンプルアプリケーション
+# Ruby on Rails Tutorial Sample Application
+
+<img width="1198" alt="Ruby_on_Rails_Tutorial_Sample_App" src="https://user-images.githubusercontent.com/32245877/65468445-14b3ba00-de9f-11e9-8605-9dc8ad1bf78f.png">
+
 
 https://fathomless-plateau-51102.herokuapp.com/
-これは、次の教材で作られたサンプルアプリケーションです。   
-[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-[Michael Hartl](http://www.michaelhartl.com/) 著
+ 
+[*Ruby on Rails Tutorial*](https://railstutorial.jp/)
+[Michael Hartl](http://www.michaelhartl.com/)
 
-## ライセンス
+## License
 
-[Ruby on Rails チュートリアル](https://railstutorial.jp/)内にある
-ソースコードはMITライセンスとBeerwareライセンスのもとで公開されています。
-詳細は [LICENSE.md](LICENSE.md) をご覧ください。
+* MIT
+* Beerware
 
-## 使い方
-
-このアプリケーションを動かす場合は、まずはリポジトリを手元にクローンしてください。
-その後、次のコマンドで必要になる RubyGems をインストールします。
+## How to use
 
 ```
 $ bundle install --without production
 ```
 
-その後、データベースへのマイグレーションを実行します。
-
 ```
 $ rails db:migrate
 ```
-
-最後に、テストを実行してうまく動いているかどうか確認してください。
 
 ```
 $ rails test
 ```
 
-テストが無事に通ったら、Railsサーバーを立ち上げる準備が整っているはずです。
-
 ```
 $ rails server
 ```
-
-詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-を参考にしてください。
